@@ -1,0 +1,5 @@
+<mat-grid-list [cols]="hiddenWord.length" [gutterSize]="'10px'">
+  <mat-grid-tile class="app-grid-tile" *ngFor="let character of hiddenWord">
+    {{character}}
+  </mat-grid-tile>
+</mat-grid-list>

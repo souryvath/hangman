@@ -1,0 +1,9 @@
+<form [formGroup]="nameForm" (ngSubmit)="valid()">
+  <mat-form-field appearance="fill" class="app-form-field">
+    <mat-label>Pseudonyme</mat-label>
+    <input type="text" formControlName="name" matInput>
+  </mat-form-field>
+  <div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!nameForm.valid">Valider</button>
+  </div>
+</form>

@@ -1,0 +1,9 @@
+<form [formGroup]="hangmanForm" (ngSubmit)="valid()">
+  <mat-form-field appearance="fill" class="app-form-field">
+    <mat-label>Lettre</mat-label>
+    <input type="text" formControlName="character" matInput>
+  </mat-form-field>
+  <div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!hangmanForm.valid">Valider</button>
+  </div>
+</form>

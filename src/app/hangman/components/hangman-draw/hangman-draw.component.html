@@ -1,0 +1,10 @@
+<img alt="gallow" class="img-gallow" [src]="hangmanGallowPictures[failedAttempts]"/>
+<p>
+  Il te reste {{maxAttempts - failedAttempts}} tentative(s)
+</p>
+<p>
+  <strong>Lettres utilisées :</strong>
+</p>
+<span *ngFor="let character of failedCharacters">
+  {{character}}
+</span>

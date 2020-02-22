@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutGap="20px">
+  <h2>Bienvenue {{name$ | async}}</h2>
+  <ng-container *ngIf="(hiddenWord$ | async) as hiddenWord">
+    <ng-container *ngIf="(word$ | async) as word">
+      <ng-container *ngIf="(status$ | async) as status">
+        <div fxLayout="row" fxLayoutGap="20px" *ngIf="status === 'NOT_FINISHED'">
+          <div fxFlex="50%">
+            <app-hangman-form [hiddenWord]="hiddenWord" [word]="word" [failedAttempts]="(failedAttempts$ | async)" [maxAttempts]="maxAttempts"
+              (validCharacterEvent)="onValidCharacterForm($event)" (failCharacterEvent)="onFailCharacterForm($event)"
+              (statusEvent)="onStatus($event)">
+            </app-hangman-form>
+          </div>
+          <div fxFlex="50%">
+            <app-hangman-draw [failedAttempts]="(failedAttempts$ | async)"
+              [failedCharacters]="(failedCharacters$ | async)" [maxAttempts]="maxAttempts">
+            </app-hangman-draw>
+          </div>
+        </div>
+        <div fxLayout="row" *ngIf="status === 'NOT_FINISHED'">
+          <div fxFlex="100%" fxLayoutGap="20px">
+            <app-hangman-word [hiddenWord]="hiddenWord"></app-hangman-word>
+          </div>
+        </div>
+        <div fxLayout="row" *ngIf="status !== 'NOT_FINISHED'">
+          <div fxFlex="100%" fxLayoutGap="20px">
+            <app-hangman-results [status]="status"></app-hangman-results>
+          </div>
+          <div fxFlex="100%" faxLayoutGap="20px">
+            <button type="reset" mat-raised-button color="primary" (click)="reset()">Rejouer</button>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
